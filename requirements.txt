@@ -4,3 +4,5 @@ transformers==4.29.2
 torch==2.0.1
 pillow==11.2.1
 numpy<2
+hf-xet==1.1.2
+types-transformers

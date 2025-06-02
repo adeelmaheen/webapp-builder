@@ -1,9 +1,7 @@
-import base64
 import streamlit as st
 from streamlit_image_select import image_select
 from mockup_code import mockup_1, mockup_2
 from huggingface_client import HuggingFaceClient
-
 
 class StreamlitAppBuilder:
     def __init__(self, api_client: HuggingFaceClient):
@@ -62,10 +60,13 @@ class StreamlitAppBuilder:
                     st.warning("No example code available for this image.")
             elif image_upload:
                 with st.spinner("Generating code from image..."):
-                    image_bytes = image_upload.read()
-                    code = self.api_client.generate_code_from_image(image_bytes)
-                    st.subheader("Generated Code")
-                    st.code(code, language="python")
+                    try:
+                        image_bytes = image_upload.read()
+                        code = self.api_client.generate_code_from_image(image_bytes)
+                        st.subheader("Generated Code")
+                        st.code(code, language="python")
+                    except Exception as e:
+                        st.error(f"Error during generation: {e}")
             else:
                 st.warning("Please upload or select a mock-up image.")
 
@@ -93,12 +94,10 @@ class StreamlitAppBuilder:
                 except Exception as e:
                     st.error(f"Error during generation: {e}")
 
-
 def main():
     hf_client = HuggingFaceClient()
     app = StreamlitAppBuilder(hf_client)
     app.run()
-
 
 if __name__ == "__main__":
     main()

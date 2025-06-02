@@ -11,4 +11,5 @@ dependencies = [
     "streamlit-image-select==0.6.0",
     "torch==2.0.1",
     "transformers==4.29.2",
+    "types-transformers>=0.1.0",
 ]

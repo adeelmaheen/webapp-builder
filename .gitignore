@@ -11,4 +11,5 @@ wheels/
 .streamlit/secrets.toml
 .env
 .streamlit/config.toml
-
+uv.lock
+pyproject.toml
