@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "Pre-downloading Hugging Face models..."
+python -c "from transformers import AutoTokenizer, AutoModelForCausalLM, BlipProcessor, BlipForConditionalGeneration; AutoTokenizer.from_pretrained('EleutherAI/gpt-neo-125M'); AutoModelForCausalLM.from_pretrained('EleutherAI/gpt-neo-125M'); BlipProcessor.from_pretrained('Salesforce/blip-image-captioning-base'); BlipForConditionalGeneration.from_pretrained('Salesforce/blip-image-captioning-base')"
